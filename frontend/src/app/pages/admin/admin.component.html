@@ -1,0 +1,209 @@
+<div class="page-header">
+
+    <h1>Admin Dashboard</h1>
+
+    <p>
+        Monitor applications and system activities.
+    </p>
+
+</div>
+
+
+<div class="stats">
+
+
+    <div class="stat-card">
+
+        <h3>{{totalApplications}}</h3>
+
+        <p>Total Applications</p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <h3>{{pendingApplications}}</h3>
+
+        <p>Pending Review</p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <h3>{{approvedApplications}}</h3>
+
+        <p>Approved</p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <h3>{{rejectedApplications}}</h3>
+
+        <p>Rejected</p>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="card">
+
+    <h2>
+        All Applications
+    </h2>
+
+    <div style="display:flex;gap:15px;margin:20px 0;">
+
+    <input
+    type="text"
+    placeholder="Search Applicant"
+    [(ngModel)]="searchText"
+    (input)="filterApplications()"
+    style="
+    padding:10px;
+    width:250px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    ">
+
+
+    <select
+    [(ngModel)]="selectedStatus"
+    (change)="filterApplications()"
+    style="
+    padding:10px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    ">
+
+        <option value="">
+            All Status
+        </option>
+
+        <option value="REFERRED">
+            Pending Review
+        </option>
+
+        <option value="APPROVED">
+            Approved
+        </option>
+
+        <option value="REJECTED">
+            Rejected
+        </option>
+
+    </select>
+
+</div>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Applicant</th>
+
+                <th>Insurance</th>
+
+                <th>Plan</th>
+
+                <th>Risk</th>
+
+                <th>Status</th>
+
+                <th>Premium</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+            <tr *ngFor="let a of filteredApplications">
+
+
+                <td>
+                    #{{a.id}}
+                </td>
+
+
+                <td>
+                    {{a.applicantName}}
+                </td>
+
+
+                <td>
+                    {{a.insuranceType}}
+                </td>
+
+
+                <td>
+                    {{a.insurancePlan}}
+                </td>
+
+
+                <td>
+
+                    <span class="badge badge-{{a.riskCategory}}">
+
+                        {{a.riskCategory}}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span class="badge badge-{{a.status}}">
+
+                        {{a.status}}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+                    ₹ {{a.premium | number:'1.2-2'}}
+                </td>
+
+
+                <td>
+
+                    <button class="btn btn-primary" (click)="viewApplication(a.id)">
+
+                        View
+
+                    </button>
+
+                </td>
+
+
+            </tr>
+
+
+        </tbody>
+
+
+    </table>
+
+
+</div>

@@ -1,0 +1,118 @@
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    margin:0;
+    font-size:34px;
+    font-weight:700;
+    color:#0f172a;
+}
+
+.page-header p{
+    margin-top:8px;
+    color:#64748b;
+    font-size:15px;
+}
+
+.applications-card{
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+}
+
+.loading{
+    text-align:center;
+    padding:50px;
+    font-size:18px;
+    color:#64748b;
+}
+
+.empty-state{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.empty-state h3{
+    margin-bottom:12px;
+    color:#0f172a;
+}
+
+.empty-state p{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.application-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.application-table thead{
+    background:#f8fafc;
+}
+
+.application-table th{
+    text-align:left;
+    padding:16px;
+    font-size:14px;
+    font-weight:600;
+    color:#334155;
+    border-bottom:2px solid #e2e8f0;
+}
+
+.application-table td{
+    padding:16px;
+    font-size:14px;
+    border-bottom:1px solid #e2e8f0;
+    vertical-align:middle;
+}
+
+.application-table tbody tr:hover{
+    background:#f8fbff;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.badge-APPROVED{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.badge-REJECTED{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.badge-REFERRED{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.badge-PENDING{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.btn{
+    min-width:90px;
+}
+
+@media(max-width:900px){
+
+    .applications-card{
+        overflow-x:auto;
+    }
+
+    .application-table{
+        min-width:900px;
+    }
+
+}

@@ -1,0 +1,703 @@
+<div class="page-header">
+
+    <h1>
+        New Insurance Application
+    </h1>
+
+    <p>
+        Complete the details below to receive your premium quotation
+        and underwriting decision from NovaShield.
+    </p>
+
+</div>
+
+<div class="card application-card">
+
+    <label>Insurance Type</label>
+
+    <select [(ngModel)]="model.insuranceType" (change)="clearQuote()">
+
+        <option value="LIFE">Life Insurance</option>
+
+        <option value="HEALTH">Health Insurance</option>
+
+        <option value="MOTOR">Motor Insurance</option>
+
+        <option value="HOME">Home Insurance</option>
+
+    </select>
+
+    <label style="margin-top:20px;display:block;">
+        Insurance Plan
+    </label>
+
+    <select [(ngModel)]="model.insurancePlan">
+
+        <option value="BASIC">
+            Basic
+        </option>
+
+        <option value="STANDARD">
+            Standard
+        </option>
+
+        <option value="PREMIUM">
+            Premium
+        </option>
+
+    </select>
+
+
+
+
+    <ng-container [ngSwitch]="model.insuranceType">
+
+        <!-- LIFE -->
+
+        <div *ngSwitchCase="'LIFE'">
+
+            <h2>Applicant Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Applicant Name</label>
+
+                    <input type="text" [(ngModel)]="model.applicantName" placeholder="Enter Full Name">
+
+                </div>
+
+                <div>
+                    <label>Age</label>
+                    <input type="number" [(ngModel)]="model.age">
+                </div>
+
+                <div>
+                    <label>Gender</label>
+                    <select [(ngModel)]="model.gender">
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Occupation</label>
+                    <input [(ngModel)]="model.occupation">
+                </div>
+
+                <div>
+                    <label>Annual Income (₹)</label>
+                    <input type="number" [(ngModel)]="model.annualIncome">
+                </div>
+
+            </div>
+
+            <h2>Policy Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Coverage Amount (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.coverageAmount">
+
+                </div>
+
+                <div>
+
+                    <label>Policy Term (Years)</label>
+
+                    <input type="number" [(ngModel)]="model.termYears">
+
+                </div>
+
+            </div>
+
+            <h2>Medical Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Smoker</label>
+
+                    <select [(ngModel)]="model.smoker">
+
+                        <option [ngValue]="false">No</option>
+
+                        <option [ngValue]="true">Yes</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Alcohol User</label>
+
+                    <select [(ngModel)]="model.alcoholUser">
+
+                        <option [ngValue]="false">No</option>
+
+                        <option [ngValue]="true">Yes</option>
+
+                    </select>
+
+                </div>
+
+                <div style="grid-column: span 2;">
+
+                    <label>Pre-existing Disease</label>
+
+                    <select [(ngModel)]="model.preExistingDisease">
+
+                        <option value="NONE">None</option>
+
+                        <option value="DIABETES">Diabetes</option>
+
+                        <option value="HYPERTENSION">Hypertension</option>
+
+                        <option value="HEART">Heart Disease</option>
+
+                        <option value="CANCER">Cancer</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <h2>👥 Nominee Details</h2>
+
+            <div class="grid-3">
+
+                <div>
+
+                    <label>Nominee Name</label>
+
+                    <input type="text" [(ngModel)]="model.nomineeName" placeholder="Enter Nominee Name">
+
+                </div>
+
+                <div>
+
+                    <label>Relationship</label>
+
+                    <select [(ngModel)]="model.nomineeRelationship">
+
+                        <option value="">Select Relationship</option>
+
+                        <option value="SPOUSE">Spouse</option>
+
+                        <option value="FATHER">Father</option>
+
+                        <option value="MOTHER">Mother</option>
+
+                        <option value="SON">Son</option>
+
+                        <option value="DAUGHTER">Daughter</option>
+
+                        <option value="BROTHER">Brother</option>
+
+                        <option value="SISTER">Sister</option>
+
+                        <option value="OTHER">Other</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Nominee Age</label>
+
+                    <input type="number" [(ngModel)]="model.nomineeAge">
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- HEALTH -->
+
+        <div *ngSwitchCase="'HEALTH'">
+
+            <h2>Applicant Information</h2>
+
+            <div class="grid-2">
+                <div>
+
+                    <label>Applicant Name</label>
+
+                    <input type="text" [(ngModel)]="model.applicantName" placeholder="Enter Full Name">
+
+                </div>
+
+                <div>
+
+                    <label>Age</label>
+
+                    <input type="number" [(ngModel)]="model.age">
+
+                </div>
+
+                <div>
+
+                    <label>Gender</label>
+
+                    <select [(ngModel)]="model.gender">
+
+                        <option value="MALE">Male</option>
+
+                        <option value="FEMALE">Female</option>
+
+                        <option value="OTHER">Other</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Occupation</label>
+
+                    <input [(ngModel)]="model.occupation">
+
+                </div>
+
+                <div>
+
+                    <label>Annual Income (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.annualIncome">
+
+                </div>
+
+            </div>
+
+            <h2>Policy Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Coverage Amount (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.coverageAmount">
+
+                </div>
+
+            </div>
+
+            <h2>Health Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Height (cm)</label>
+
+                    <input type="number" [(ngModel)]="model.heightCm">
+
+                </div>
+
+                <div>
+
+                    <label>Weight (kg)</label>
+
+                    <input type="number" [(ngModel)]="model.weightKg">
+
+                </div>
+
+                <div>
+
+                    <label>Smoker</label>
+
+                    <select [(ngModel)]="model.smoker">
+
+                        <option [ngValue]="false">No</option>
+
+                        <option [ngValue]="true">Yes</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Family History</label>
+
+                    <select [(ngModel)]="model.familyHistory">
+
+                        <option [ngValue]="false">No</option>
+
+                        <option [ngValue]="true">Yes</option>
+
+                    </select>
+
+                </div>
+
+                <div style="grid-column: span 2;">
+
+                    <label>Pre-existing Disease</label>
+
+                    <select [(ngModel)]="model.preExistingDisease">
+
+                        <option value="NONE">None</option>
+
+                        <option value="DIABETES">Diabetes</option>
+
+                        <option value="HYPERTENSION">Hypertension</option>
+
+                        <option value="HEART">Heart Disease</option>
+
+                        <option value="CANCER">Cancer</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <h2>👥 Nominee Details</h2>
+
+            <div class="grid-3">
+
+                <div>
+
+                    <label>Nominee Name</label>
+
+                    <input type="text" [(ngModel)]="model.nomineeName" placeholder="Enter Nominee Name">
+
+                </div>
+
+                <div>
+
+                    <label>Relationship</label>
+
+                    <select [(ngModel)]="model.nomineeRelationship">
+
+                        <option value="">Select Relationship</option>
+
+                        <option value="SPOUSE">Spouse</option>
+
+                        <option value="FATHER">Father</option>
+
+                        <option value="MOTHER">Mother</option>
+
+                        <option value="SON">Son</option>
+
+                        <option value="DAUGHTER">Daughter</option>
+
+                        <option value="BROTHER">Brother</option>
+
+                        <option value="SISTER">Sister</option>
+
+                        <option value="OTHER">Other</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Nominee Age</label>
+
+                    <input type="number" [(ngModel)]="model.nomineeAge">
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- MOTOR -->
+
+        <div *ngSwitchCase="'MOTOR'">
+
+            <h2>Owner Information</h2>
+
+            <div class="grid-2">
+                <div>
+
+                    <label>Owner Name</label>
+
+                    <input type="text" [(ngModel)]="model.applicantName" placeholder="Enter Owner Name">
+
+                </div>
+
+                <div>
+
+                    <label>Age</label>
+
+                    <input type="number" [(ngModel)]="model.age">
+
+                </div>
+
+                <div>
+
+                    <label>Occupation</label>
+
+                    <input [(ngModel)]="model.occupation">
+
+                </div>
+
+            </div>
+
+
+
+            <h2>Vehicle Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Vehicle Type</label>
+
+                    <select [(ngModel)]="model.vehicleType">
+
+                        <option value="TWO_WHEELER">Two Wheeler</option>
+
+                        <option value="CAR">Car</option>
+
+                        <option value="COMMERCIAL">Commercial</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Vehicle Age (Years)</label>
+
+                    <input type="number" [(ngModel)]="model.vehicleAge">
+
+                </div>
+
+                <div>
+
+                    <label>Vehicle Value (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.vehicleValue">
+
+                </div>
+
+                <div>
+
+                    <label>Previous Claims</label>
+
+                    <input type="number" [(ngModel)]="model.pastClaims">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HOME -->
+
+        <div *ngSwitchCase="'HOME'">
+
+            <h2>Owner Information</h2>
+
+            <div class="grid-2">
+                <div>
+
+                    <label>Owner Name</label>
+
+                    <input type="text" [(ngModel)]="model.applicantName" placeholder="Enter Owner Name">
+
+                </div>
+
+                <div>
+
+                    <label>Age</label>
+
+                    <input type="number" [(ngModel)]="model.age">
+
+                </div>
+
+                <div>
+
+                    <label>Occupation</label>
+
+                    <input [(ngModel)]="model.occupation">
+
+                </div>
+
+                <div>
+
+                    <label>Annual Income (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.annualIncome">
+
+                </div>
+
+            </div>
+
+            <h2>Insurance Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Coverage Amount (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.coverageAmount">
+
+                </div>
+
+            </div>
+
+            <h2>Property Information</h2>
+
+            <div class="grid-2">
+
+                <div>
+
+                    <label>Property Type</label>
+
+                    <select [(ngModel)]="model.propertyType">
+
+                        <option value="APARTMENT">Apartment</option>
+
+                        <option value="INDEPENDENT">Independent House</option>
+
+                        <option value="VILLA">Villa</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+
+                    <label>Property Age (Years)</label>
+
+                    <input type="number" [(ngModel)]="model.propertyAge">
+
+                </div>
+
+                <div>
+
+                    <label>Property Value (₹)</label>
+
+                    <input type="number" [(ngModel)]="model.propertyValue">
+
+                </div>
+
+                <div>
+
+                    <label>Property Risk Zone</label>
+
+                    <select [(ngModel)]="model.propertyLocation">
+
+                        <option value="LOW_RISK">
+                            Low Risk Area
+                        </option>
+
+                        <option value="MEDIUM_RISK">
+                            Medium Risk Area
+                        </option>
+
+                        <option value="HIGH_RISK">
+                            High Risk Area
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+    </ng-container>
+
+    <div style="
+        display:flex;
+        gap:15px;
+        margin-top:30px;
+        flex-wrap:wrap;">
+
+        <button class="btn btn-secondary" (click)="getQuote()" [disabled]="loading">
+
+            Calculate Premium
+
+        </button>
+
+        <button class="btn btn-primary" (click)="submit()" [disabled]="loading">
+
+            Submit Application
+
+        </button>
+
+    </div>
+
+    <p *ngIf="error"
+style="
+color:red;
+white-space:pre-line;
+margin-top:15px;
+font-weight:600;
+">
+
+{{error}}
+
+</p>
+
+</div>
+
+<!-- Quote Summary -->
+
+<div class="card quote-card" *ngIf="quote">
+
+    <h2>
+
+        Quote Summary
+
+    </h2>
+
+    <p>
+
+        <strong>Decision :</strong>
+
+        <span class="badge badge-{{quote.status}}">
+
+            {{ quote.status }}
+
+        </span>
+
+    </p>
+
+    <p>
+
+        <strong>Risk Category :</strong>
+
+        <span class="badge badge-{{quote.riskCategory}}">
+
+            {{ quote.riskCategory }}
+
+        </span>
+
+        (Score : {{ quote.riskScore }})
+
+    </p>
+
+    <p>
+
+        <strong>Annual Premium :</strong>
+
+        ₹ {{ quote.premium | number:'1.2-2' }}
+
+    </p>
+
+    <p>
+
+        <strong>Remarks :</strong>
+
+        {{ quote.remarks }}
+
+    </p>
+
+</div>

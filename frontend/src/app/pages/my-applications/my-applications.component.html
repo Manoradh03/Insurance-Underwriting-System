@@ -1,0 +1,142 @@
+<div class="page-header">
+
+    <h1>
+        My Insurance Applications
+    </h1>
+
+    <p>
+        View and track all your submitted insurance applications.
+    </p>
+
+</div>
+
+<div class="card applications-card">
+
+    <div *ngIf="loading" class="loading">
+
+        Loading applications...
+
+    </div>
+
+    <div
+        *ngIf="!loading && applications.length === 0"
+        class="empty-state">
+
+        <h3>
+            No Insurance Applications Found
+        </h3>
+
+        <p>
+
+            You haven't submitted any insurance applications yet.
+
+        </p>
+
+        <button
+            routerLink="/apply"
+            class="btn btn-primary">
+
+            Apply for Insurance
+
+        </button>
+
+    </div>
+
+    <table
+        *ngIf="!loading && applications.length > 0"
+        class="application-table">
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Insurance</th>
+
+            <th>Plan</th>
+
+<th>Applied Date</th>
+
+<th>Coverage</th>
+
+            <th>Premium</th>
+
+            <th>Status</th>
+
+            <th>Action</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr *ngFor="let app of applications">
+
+            <td>
+
+                #{{app.id}}
+
+            </td>
+
+            <td>
+
+                {{app.insuranceType}}
+
+            </td>
+
+            <td>
+
+{{app.insurancePlan}}
+
+</td>
+
+<td>
+
+{{app.createdAt | date:'dd-MMM-yyyy'}}
+
+</td>
+
+<td>
+
+₹ {{app.coverageAmount | number}}
+
+</td>
+
+            <td>
+
+                ₹ {{app.premium | number:'1.2-2'}}
+
+            </td>
+
+            <td>
+
+                <span
+                    class="badge badge-{{app.status}}">
+
+                    {{app.status}}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="btn btn-secondary"
+                    [routerLink]="['/applications', app.id]">
+
+                    View
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

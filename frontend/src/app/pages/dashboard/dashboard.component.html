@@ -1,0 +1,188 @@
+<div class="dashboard">
+
+    <!-- Welcome Section -->
+    <section class="hero">
+        <div>
+            <h1>
+                Welcome,
+                {{ auth.currentUser()?.fullName || auth.currentUser()?.username }}
+            </h1>
+
+            <p>
+                NovaShield Insurance Underwriting System
+            </p>
+        </div>
+    </section>
+
+    <!-- Insurance Products -->
+    <section>
+
+        <h2 class="section-title">
+            Insurance Products
+        </h2>
+
+        <div class="insurance-grid">
+
+            <!-- Life -->
+            <div class="insurance-card">
+
+                <div>
+
+                    <h2>🛡 Life Insurance</h2>
+
+                    <p class="description">
+                        Protect your family's future with comprehensive life coverage.
+                    </p>
+
+                    <ul>
+                        <li>Basic - ₹10 Lakhs</li>
+
+                        <li>
+                            Standard - ₹25 Lakhs
+                            <span class="recommended">
+                                Recommended
+                            </span>
+                        </li>
+
+                        <li>Premium - ₹50 Lakhs</li>
+                    </ul>
+
+                </div>
+                <hr style="margin:16px 0;border:none;border-top:1px solid #e5e7eb;">
+
+
+
+                <button
+    [routerLink]="['/apply']"
+    [queryParams]="{ type: 'LIFE' }"
+    class="btn btn-primary">
+
+    Apply Now
+
+</button>
+
+            </div>
+
+            <!-- Health -->
+            <div class="insurance-card">
+
+                <div>
+
+                    <h2>❤️ Health Insurance</h2>
+
+                    <p class="description">
+                        Cashless hospitalization with nationwide network hospitals.
+                    </p>
+
+                    <ul>
+
+                        <li>Basic - ₹5 Lakhs</li>
+
+                        <li>
+                            Standard - ₹10 Lakhs
+                            <span class="recommended">
+                                Recommended
+                            </span>
+                        </li>
+
+                        <li>Premium - ₹25 Lakhs</li>
+
+                    </ul>
+
+                </div>
+
+                <button
+    [routerLink]="['/apply']"
+    [queryParams]="{ type: 'HEALTH' }"
+    class="btn btn-primary">
+
+    Apply Now
+
+</button>
+
+            </div>
+
+            <!-- Motor -->
+            <div class="insurance-card">
+
+                <div>
+
+                    <h2>🚗 Motor Insurance</h2>
+
+                    <p class="description">
+                        Secure your vehicle against accidents and unexpected damage.
+                    </p>
+
+                    <ul>
+
+                        <li>Basic - Third Party</li>
+
+                        <li>
+                            Standard - Comprehensive
+                            <span class="recommended">
+                                Recommended
+                            </span>
+                        </li>
+
+                        <li>Premium - Zero Depreciation</li>
+
+                    </ul>
+
+                </div>
+
+                <button
+    [routerLink]="['/apply']"
+    [queryParams]="{ type: 'MOTOR' }"
+    class="btn btn-primary">
+
+    Apply Now
+
+</button>
+
+            </div>
+
+            <!-- Home -->
+            <div class="insurance-card">
+
+                <div>
+
+                    <h2>🏠 Home Insurance</h2>
+
+                    <p class="description">
+                        Protect your dream home against natural and accidental damages.
+                    </p>
+
+                    <ul>
+
+                        <li>Basic - ₹20 Lakhs</li>
+
+                        <li>
+                            Standard - ₹50 Lakhs
+                            <span class="recommended">
+                                Recommended
+                            </span>
+                        </li>
+
+                        <li>Premium - ₹1 Crore</li>
+
+                    </ul>
+
+                </div>
+
+                <button
+    [routerLink]="['/apply']"
+    [queryParams]="{ type: 'HOME' }"
+    class="btn btn-primary">
+
+    Apply Now
+
+</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>

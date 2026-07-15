@@ -1,0 +1,201 @@
+<div class="page-header">
+    <h1>Underwriter Dashboard</h1>
+    <p>Review insurance applications and take underwriting decisions.</p>
+</div>
+<div class="stats">
+
+    <div class="stat-card" style="cursor:pointer;" (click)="showApplications('REFERRED')">
+
+        <h3>{{pendingApplications}}</h3>
+
+        <p>Pending Review</p>
+        <small style="color:#64748b;">
+            Applications awaiting decision
+        </small>
+
+    </div>
+
+    <div class="stat-card" style="cursor:pointer;" (click)="showApplications('APPROVED')">
+
+        <h3>{{approvedApplications}}</h3>
+
+        <p>Approved</p>
+        <small style="color:#64748b;">
+            Policies approved
+        </small>
+
+    </div>
+
+    <div class="stat-card" style="cursor:pointer;" (click)="showApplications('REJECTED')">
+
+        <h3>{{rejectedApplications}}</h3>
+
+        <p>Rejected</p>
+        <small style="color:#64748b;">
+            Applications rejected
+        </small>
+
+    </div>
+
+    <div class="stat-card" style="cursor:pointer;" (click)="showApplications('ALL')">
+
+        <h3>{{apps.length}}</h3>
+
+        <p>All Applications</p>
+
+        <small style="color:#64748b;">
+            View every insurance application
+        </small>
+
+    </div>
+
+</div>
+
+<div class="card" *ngIf="selectedView">
+    <h2 style="margin-bottom:20px;">
+
+        <span *ngIf="selectedView==='REFERRED'">
+            Pending Review Applications
+        </span>
+
+        <span *ngIf="selectedView==='APPROVED'">
+            Approved Applications
+        </span>
+
+        <span *ngIf="selectedView==='REJECTED'">
+            Rejected Applications
+        </span>
+
+        <span *ngIf="selectedView==='ALL'">
+            All Insurance Applications
+        </span>
+
+    </h2>
+
+    <table>
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Applicant</th>
+
+                <th>Insurance</th>
+
+                <th>Plan</th>
+
+                <th>Coverage</th>
+
+                <th>Premium</th>
+
+                <th>Risk</th>
+
+                <th>Status</th>
+
+                <th>Submitted</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of filteredApps">
+
+                <td>#{{a.id}}</td>
+
+                <td>{{a.applicantName}}</td>
+
+                <td>{{a.insuranceType}}</td>
+
+                <td>{{a.insurancePlan}}</td>
+
+                <td>₹ {{a.coverageAmount | number}}</td>
+
+                <td>₹ {{a.premium | number:'1.2-2'}}</td>
+
+                <td>
+
+                    <span class="badge badge-{{a.riskCategory}}">
+
+                        <span *ngIf="a.riskCategory==='LOW'">
+                            Low Risk
+                        </span>
+
+                        <span *ngIf="a.riskCategory==='MEDIUM'">
+                            Medium Risk
+                        </span>
+
+                        <span *ngIf="a.riskCategory==='HIGH'">
+                            High Risk
+                        </span>
+
+                    </span>
+                </td>
+
+                <td>
+
+                    <span class="badge badge-{{a.status}}">
+
+                        <span *ngIf="a.status==='REFERRED'">
+                            Pending Review
+                        </span>
+
+                        <span *ngIf="a.status==='APPROVED'">
+                            Approved
+                        </span>
+
+                        <span *ngIf="a.status==='REJECTED'">
+                            Rejected
+                        </span>
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    {{a.createdAt | date:'dd-MMM-yyyy'}}
+
+                </td>
+
+                <td>
+
+                    <!-- View button for all applications -->
+
+                    <button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" (click)="review(a.id)">
+
+                        View Details
+
+                    </button>
+
+                    <!-- Show Approve & Reject only for REFERRED -->
+                    <ng-container *ngIf="a.status === 'REFERRED'">
+
+                        <button class="btn btn-success" style="padding:6px 12px;font-size:12px;margin-left:5px;"
+                            (click)="decide(a,'APPROVED')">
+
+                            Approve
+
+                        </button>
+
+
+                        <button class="btn btn-danger" style="padding:6px 12px;font-size:12px;margin-left:5px;"
+                            (click)="decide(a,'REJECTED')">
+
+                            Reject
+
+                        </button>
+
+                    </ng-container>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!filteredApps.length" class="muted">
+        No applications found.
+    </p>
+</div>
